@@ -1,0 +1,13 @@
+{
+  "name": "@nib/masked-input",
+  "version": "0.0.1",
+  "scripts": {
+    "example": "browserify example/date-input.js -o example/date-input.bundle.js && browserify example/phone-input.js -o example/phone-input.bundle.js",
+    "test": "mochify"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "mochify": "^2.9.0",
+    "simulant": "^0.1.5"
+  }
+}
