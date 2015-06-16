@@ -7,11 +7,11 @@ new TextInput({
   el: document.querySelector('input'),
 
   //only allow digits and max length 9 (10 total after we allow this one)
-  allow: function(char) {
+  accept: function(char) {
     return DIGIT.test(char) && this.value.length <= 11;
   },
 
-  format: function(event) {
+  changed: function(event) {
     var
       input = this,
       value = input.value,

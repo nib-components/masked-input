@@ -10,10 +10,10 @@ function MaskedInput(options) {
     return new MaskedInput(el, format);
   }
 
-  this.el     = options.el;
-  this.allow  = options.allow;
-  this.format = options.format;
-  this.event  = null;
+  this.el       = options.el;
+  this.accept   = options.accept;
+  this.changed  = options.changed;
+  this.event    = null;
 
   this.el.addEventListener('keydown',   this.onKeyDown.bind(this));
   this.el.addEventListener('keypress',  this.onKeyPress.bind(this));
@@ -59,8 +59,8 @@ MaskedInput.prototype = {
       return;
     }
 
-    //check whether the character is allowed
-    if (this.allow && !this.allow.call(this, char)) {
+    //check whether the character is accepted
+    if (this.accept && !this.accept.call(this, char)) {
       event.preventDefault();
     }
 
@@ -72,12 +72,12 @@ MaskedInput.prototype = {
 
     if (this.event) {
 
-      //remove characters that aren't allowed and update the selection start/end as appropiate
+      //remove characters that aren't accepted and update the selection start/end as appropiate
       if (event.name === 'PASTE') {
       }
 
       //dispatch an event to the user to format the value
-      this.format.call(this, new MaskedInputEvent(this.event, this));
+      this.changed.call(this, new MaskedInputEvent(this.event, this));
 
     }
 
