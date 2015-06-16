@@ -13,10 +13,9 @@ new TextInput({
 
   changed: function(event) {
     var
-      input = this,
-      value = input.value,
-      start = input.selectionStart,
-      end   = input.selectionEnd
+      value = event.value,
+      start = event.selectionStart,
+      end   = event.selectionEnd
     ;
 
     //backspace the slash immediately to the left of the number
@@ -57,9 +56,9 @@ new TextInput({
     }
 
     //set the value and position
-    input.value           = value.substr(0, 10);
-    input.selectionStart  = start;
-    input.selectionEnd    = end;
+    event.value           = value.substr(0, 10);
+    event.selectionStart  = start;
+    event.selectionEnd    = end;
 
   }
 

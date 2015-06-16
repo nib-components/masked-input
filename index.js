@@ -1,9 +1,3 @@
-
-function MaskedInputEvent(name, input) {
-  this.name   = name;
-  this.input  = input;
-}
-
 function MaskedInput(options) {
 
   if (!(this instanceof MaskedInput)) {
@@ -73,11 +67,22 @@ MaskedInput.prototype = {
     if (this.event) {
 
       //remove characters that aren't accepted and update the selection start/end as appropiate
-      if (event.name === 'PASTE') {
+      if (this.event === 'PASTE') {
       }
 
-      //dispatch an event to the user to format the value
-      this.changed.call(this, new MaskedInputEvent(this.event, this));
+      var event = {
+        name:           this.event,
+        value:          this.value,
+        selectionStart: this.selectionStart,
+        selectionEnd:   this.selectionEnd
+      };
+
+      //dispatch the event to the user allowing them to change the value
+      this.changed.call(this, event);
+
+      this.value          = event.value;
+      this.selectionStart = event.selectionStart;
+      this.selectionEnd   = event.selectionEnd;
 
     }
 

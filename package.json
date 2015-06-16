@@ -1,6 +1,6 @@
 {
   "name": "@nib-components/masked-input",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "example": "browserify example/date-input.js -o example/date-input.bundle.js && browserify example/phone-input.js -o example/phone-input.bundle.js",
     "test": "mochify"
