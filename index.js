@@ -43,8 +43,8 @@ MaskedInput.prototype = {
     var code = event.keyCode || event.which;
     var char = String.fromCharCode(event.charCode || code);
 
-    //let the browser handle non-visible key presses as per default
-    if (code < 32 || code === 127) {
+    //ignore keypresses for non-visible keys in FF (only browser to fire the event
+    if (event.charCode === 0) {
       return;
     }
 
