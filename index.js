@@ -53,6 +53,12 @@ MaskedInput.prototype = {
       return;
     }
 
+    //enable default form submit behaviour on enter press
+    if (code === 13) {
+      this.event = 'ENTER';
+      return true;
+    }
+
     //check whether the character is accepted
     if (this.accept && !this.accept.call(this, char)) {
       event.preventDefault();
